@@ -16,3 +16,13 @@ class Place(BaseModel):
     latitude = 0.0
     longitude = 0.0
     amenity_ids = []
+    # print("Place invoked!")
+
+    def __init__(self, *args, **kwargs):
+        """Call superclass init method to invoke inheritance of its methods."""
+        if kwargs:
+            # print('\nPlace kwargs', kwargs, '\n')
+            for key in kwargs:
+                if key != '__class__':
+                    setattr(self, key, kwargs[key])
+        super(Place, self).__init__(*args, **kwargs)
